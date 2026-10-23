@@ -41,6 +41,7 @@ O MetaSafe EPI confere, por visão computacional no edge, se cada pessoa que ent
 
 | Item | Link |
 | --- | --- |
+| **Repositório (Sprint 4)** | https://github.com/12345-oss/metasafe-epi |
 | 🎥 **Vídeo de pitch e demonstração (Sprint 4)** | `PREENCHER: link do YouTube (não listado)` |
 | **Board Trello (Sprint 4)** | https://trello.com/b/5ZEjgFwj/metasafe-epi-sprint-4-entrega-final |
 | Board Trello das Sprints 1–3 (histórico) | https://trello.com/invite/b/6aa9a0d60c198ec8e4172a1c/ATTI9f167e47079418fd46ba63b16020e4a10E3CC86E/metasafe-epi-sprint-3 |
@@ -74,7 +75,7 @@ O MetaSafe EPI confere, por visão computacional no edge, se cada pessoa que ent
 Pré-requisito: [Docker Desktop](https://www.docker.com/products/docker-desktop/) (ou Docker Engine + Compose v2).
 
 ```bash
-git clone <URL-DO-REPOSITORIO>
+git clone https://github.com/12345-oss/metasafe-epi.git
 cd metasafe-epi
 docker compose up --build
 ```
