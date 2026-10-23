@@ -1,0 +1,55 @@
+# MetaSafe EPI — ambiente completo
+#   docker compose up --build          → banco + API + interface em http://localhost:8080
+#   docker compose --profile edge up   → também liga o simulador do gateway Edge AI
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: metasafe
+      POSTGRES_USER: metasafe
+      POSTGRES_PASSWORD: metasafe
+    volumes:
+      - dados_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U metasafe -d metasafe"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  api:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://metasafe:metasafe@db:5432/metasafe
+      JWT_SECRET: ${JWT_SECRET:-troque-esta-chave-em-producao}
+      EDGE_API_KEY: ${EDGE_API_KEY:-edge-dev-key}
+      SEED_ON_STARTUP: "true"
+      CORS_ORIGINS: http://localhost:8080,http://localhost:5173
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      api:
+        condition: service_healthy
+
+  edge:
+    image: python:3.12-alpine
+    profiles: ["edge"]
+    working_dir: /edge
+    volumes:
+      - ./edge-simulator:/edge:ro
+    command: ["python", "-u", "simulador.py", "--api", "http://api:8000", "--intervalo", "5"]
+    environment:
+      EDGE_API_KEY: ${EDGE_API_KEY:-edge-dev-key}
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  dados_postgres:

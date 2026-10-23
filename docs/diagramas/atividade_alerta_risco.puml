@@ -1,0 +1,58 @@
+@startuml
+start
+
+partition "Operador" {
+  :Entrar em zona operacional;
+}
+
+partition "Camera / Edge AI / Sensores" {
+  :Capturar evento de campo;
+  :Identificar zona, operador e EPIs visiveis;
+}
+
+partition "Motor de Regras EPI" {
+  :Consultar matriz de EPIs da zona;
+  if (EPIs obrigatorios conformes?) then (Sim)
+    :Registrar evento conforme;
+  else (Nao)
+    :Calcular severidade do risco;
+    :Criar alerta preventivo;
+  endif
+}
+
+if (Houve alerta?) then (Nao)
+  partition "Sistema" {
+    :Atualizar dashboard de conformidade;
+  }
+  stop
+else (Sim)
+  partition "Sistema de Alertas" {
+    if (Severidade media ou critica?) then (Sim)
+      :Orientar operador;
+      :Notificar supervisor;
+    else (Nao)
+      :Orientar operador no terminal local;
+    endif
+  }
+
+  partition "Operador" {
+    :Corrigir EPI ou sair da area;
+  }
+
+  partition "Supervisor de Seguranca" {
+    :Validar situacao;
+    if (Risco corrigido?) then (Sim)
+      :Encerrar ocorrencia com acao preventiva;
+    else (Nao)
+      :Escalar ocorrencia para acao de seguranca;
+    endif
+  }
+
+  partition "Sistema" {
+    :Atualizar historico e indicadores;
+  }
+endif
+
+stop
+@enduml
+

@@ -1,0 +1,52 @@
+@startuml
+left to right direction
+
+actor "Operador de\nchao de fabrica" as Operador
+actor "Supervisor de\nseguranca" as Supervisor
+actor "Gestor\nindustrial" as Gestor
+actor "Camera /\nEdge AI" as Camera
+actor "Sensor IoT" as Sensor
+actor "ERP / MES" as MES
+
+rectangle "MetaSafe EPI" {
+  usecase "Autenticar\nusuario" as UC01
+  usecase "Registrar entrada\nem area operacional" as UC02
+  usecase "Monitorar uso\nde EPI" as UC03
+  usecase "Validar conformidade\npor zona" as UC04
+  usecase "Emitir alerta\nde risco" as UC05
+  usecase "Orientar\noperador" as UC06
+  usecase "Notificar\nsupervisor" as UC07
+  usecase "Tratar\nocorrencia" as UC08
+  usecase "Consultar\ndashboard" as UC09
+  usecase "Gerar relatorio\nde conformidade" as UC10
+  usecase "Configurar zonas,\nEPIs e limiares" as UC11
+  usecase "Exportar eventos\npara ERP/MES" as UC12
+}
+
+Operador --> UC01
+Operador --> UC02
+Operador --> UC06
+
+Supervisor --> UC01
+Supervisor --> UC08
+Supervisor --> UC09
+Supervisor --> UC11
+
+Gestor --> UC01
+Gestor --> UC09
+Gestor --> UC10
+
+Camera --> UC03
+Sensor --> UC03
+MES --> UC12
+
+UC03 ..> UC04 : <<include>>
+UC05 ..> UC04 : <<extend>>\nquando houver risco
+UC05 ..> UC06 : <<include>>
+UC05 ..> UC07 : <<include>>
+UC08 ..> UC09 : <<include>>
+UC10 ..> UC09 : <<include>>
+UC12 ..> UC10 : <<extend>>\nquando integracao ativa
+
+@enduml
+

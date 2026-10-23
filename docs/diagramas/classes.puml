@@ -1,0 +1,158 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+abstract class Usuario {
+  +UUID id
+  +String nome
+  +String email
+  +String perfil
+  +Boolean ativo
+  +autenticar()
+  +alterarStatus()
+}
+
+class Operador {
+  +String matricula
+  +String turno
+  +String setor
+  +receberOrientacao()
+  +confirmarCorrecao()
+}
+
+class Supervisor {
+  +String areaResponsavel
+  +tratarOcorrencia()
+  +configurarRegra()
+}
+
+class Gestor {
+  +String unidadeIndustrial
+  +consultarIndicadores()
+  +gerarRelatorio()
+}
+
+class ZonaOperacional {
+  +UUID id
+  +String nome
+  +String linha
+  +String tipoRisco
+  +Integer nivelSeveridade
+  +ativarMonitoramento()
+  +desativarMonitoramento()
+}
+
+class RequisitoEPI {
+  +UUID id
+  +Boolean obrigatorio
+  +Float confiancaMinima
+  +validarDeteccao()
+}
+
+class TipoEPI {
+  +UUID id
+  +String nome
+  +String descricao
+  +String normaReferencia
+}
+
+abstract class DispositivoMonitoramento {
+  +UUID id
+  +String identificador
+  +String status
+  +registrarEvento()
+  +verificarSaude()
+}
+
+class CameraIP {
+  +String urlStream
+  +String resolucao
+  +capturarFrame()
+}
+
+class SensorIoT {
+  +String topicoMqtt
+  +String tipoMedicao
+  +publicarTelemetria()
+}
+
+class EventoMonitoramento {
+  +UUID id
+  +DateTime criadoEm
+  +String origem
+  +String statusConformidade
+  +registrarDeteccao()
+}
+
+class DeteccaoEPI {
+  +UUID id
+  +Float confianca
+  +Boolean presente
+  +String evidencia
+}
+
+class MotorRegrasEPI {
+  +avaliarEvento()
+  +calcularSeveridade()
+  +gerarAlerta()
+}
+
+class AlertaRisco {
+  +UUID id
+  +String severidade
+  +String mensagem
+  +String status
+  +DateTime criadoEm
+  +notificar()
+  +encerrar()
+}
+
+class OcorrenciaSeguranca {
+  +UUID id
+  +String classificacao
+  +String comentario
+  +DateTime encerradaEm
+  +classificar()
+  +escalar()
+  +encerrar()
+}
+
+class RelatorioConformidade {
+  +UUID id
+  +Date periodoInicial
+  +Date periodoFinal
+  +String formato
+  +gerar()
+  +exportar()
+}
+
+class ServicoNotificacao {
+  +enviarAlertaLocal()
+  +enviarPushSupervisor()
+  +registrarFalhaEnvio()
+}
+
+Usuario <|-- Operador
+Usuario <|-- Supervisor
+Usuario <|-- Gestor
+DispositivoMonitoramento <|-- CameraIP
+DispositivoMonitoramento <|-- SensorIoT
+
+ZonaOperacional "1" *-- "1..*" RequisitoEPI : matriz de EPIs
+RequisitoEPI "*" --> "1" TipoEPI
+ZonaOperacional "1" o-- "0..*" DispositivoMonitoramento
+EventoMonitoramento "*" --> "1" ZonaOperacional
+EventoMonitoramento "*" --> "0..1" Operador
+EventoMonitoramento "1" *-- "0..*" DeteccaoEPI
+DeteccaoEPI "*" --> "1" TipoEPI
+MotorRegrasEPI ..> EventoMonitoramento
+MotorRegrasEPI ..> RequisitoEPI
+MotorRegrasEPI ..> AlertaRisco
+AlertaRisco "*" --> "1" EventoMonitoramento
+AlertaRisco "1" o-- "0..1" OcorrenciaSeguranca
+Supervisor "1" --> "0..*" OcorrenciaSeguranca
+Gestor "1" --> "0..*" RelatorioConformidade
+RelatorioConformidade ..> EventoMonitoramento
+ServicoNotificacao ..> AlertaRisco
+
+@enduml
+
