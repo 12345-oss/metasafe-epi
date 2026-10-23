@@ -2,7 +2,7 @@
 
 Este documento reúne os artefatos Scrum das quatro Sprints, com foco na Sprint 4 (entrega final). O board do Trello é a fonte do dia a dia; aqui fica o registro consolidado para avaliação.
 
-> **Para o grupo:** os trechos marcados com ✏️ dependem de informação que só vocês têm (quem fez o quê, datas das cerimônias, feedback recebido). Preencham antes da entrega — registros reais de uso do Scrum contam como diferencial na avaliação.
+> **Como a Sprint 4 foi conduzida:** a Sprint 4 foi executada integralmente por Henrique Monteiro Khouri, que acumulou os papéis de Product Owner, Scrum Master e desenvolvimento. Os registros abaixo descrevem o que de fato aconteceu entre 21 e 22/10/2026.
 
 **Board Trello (Sprint 4):** https://trello.com/b/5ZEjgFwj/metasafe-epi-sprint-4-entrega-final
 
@@ -12,9 +12,10 @@ O board das Sprints 1–3 (https://trello.com/invite/b/6aa9a0d60c198ec8e4172a1c/
 
 | Papel | Integrante |
 | --- | --- |
-| Product Owner | ✏️ |
-| Scrum Master | ✏️ |
-| Time de desenvolvimento | Juan Alberto Lenis Rodriguez, Henrique Monteiro Khouri, Rodrigo Arantes da Silva Philippi, Celso Fernando Ferrer Singh, Kagio Miura Neto |
+| Product Owner (Sprint 4) | Henrique Monteiro Khouri |
+| Scrum Master (Sprint 4) | Henrique Monteiro Khouri |
+| Desenvolvimento (Sprint 4) | Henrique Monteiro Khouri |
+| Integrantes do grupo | Juan Alberto Lenis Rodriguez, Henrique Monteiro Khouri, Rodrigo Arantes da Silva Philippi, Celso Fernando Ferrer Singh, Kagio Miura Neto |
 
 ## 2. Evolução das Sprints
 
@@ -55,7 +56,13 @@ Prioridade: **Essencial**, **Importante** ou **Desejável**, herdada da Sprint 1
 
 **Meta da Sprint:** entregar o MetaSafe EPI funcionando de ponta a ponta — evento de câmera → regra → alerta em tempo real → tratamento → relatório — com documentação consolidada e pitch gravado.
 
-**Data da Planning:** ✏️ · **Duração da Sprint:** ✏️ · **Participantes:** ✏️
+**Data da Planning:** 21/10/2026 · **Duração da execução:** 21/10 a 22/10/2026 · **Participante:** Henrique Monteiro Khouri
+
+**Decisões da Planning**
+
+- O repositório da Sprint 3 continha apenas documentação. A Sprint 4 parte da stack definida na Sprint 1 (React + TypeScript, FastAPI, PostgreSQL, WebSocket, JWT, Docker) para construir o produto.
+- Dados reais da Metaindústria não estão disponíveis: os fluxos serão demonstrados com dados simulados gerados pelo próprio motor de regras.
+- O backlog foi quebrado em 15 itens (69 pontos), priorizando primeiro o fluxo crítico evento → regra → alerta → tratamento.
 
 **Critérios de aceite da Sprint (do enunciado):**
 
@@ -67,47 +74,46 @@ Prioridade: **Essencial**, **Importante** ou **Desejável**, herdada da Sprint 1
 
 ## 5. Sprint 4 — Sprint Backlog
 
-Estimativa em pontos (escala de Fibonacci). ✏️ Ajustem as estimativas e os responsáveis para refletir o que o grupo combinou.
+Estimativa em pontos (escala de Fibonacci).
 
 | # | Item | Histórias | Pontos | Responsável | Status |
 | --- | --- | --- | --- | --- | --- |
-| S4-01 | Estrutura do repositório, Docker Compose e ambiente sem Docker | — | 3 | ✏️ | ✅ |
-| S4-02 | Modelo de dados a partir do diagrama de classes e dados simulados da Metaindústria | PB02–PB05 | 5 | ✏️ | ✅ |
-| S4-03 | Autenticação JWT e perfis operador, supervisor e gestor | PB01 | 3 | ✏️ | ✅ |
-| S4-04 | Motor de regras: matriz, limiar, severidade, reincidência e recorrência | PB05, PB09 | 8 | ✏️ | ✅ |
-| S4-05 | Ingestão do Edge AI, saúde de dispositivos e simulador | PB04, PB13 | 5 | ✏️ | ✅ |
-| S4-06 | WebSocket de alertas e notificação do supervisor | PB06 | 3 | ✏️ | ✅ |
-| S4-07 | Telas Visão geral e Monitoramento ao vivo | PB06, PB11 | 5 | ✏️ | ✅ |
-| S4-08 | Central de alertas, Tratamento e Histórico de ocorrências | PB06, PB08, PB10 | 8 | ✏️ | ✅ |
-| S4-09 | Operadores & EPIs e Terminal de campo | PB02, PB07 | 5 | ✏️ | ✅ |
-| S4-10 | Zonas & regras com auditoria | PB03, PB15 | 5 | ✏️ | ✅ |
-| S4-11 | Relatórios, exportação CSV/PDF e integração ERP/MES | PB11, PB12, PB14 | 5 | ✏️ | ✅ |
-| S4-12 | Testes automatizados da API | todas | 3 | ✏️ | ✅ |
-| S4-13 | README, arquitetura final, manual de uso, rastreabilidade e Scrum consolidado | — | 5 | ✏️ | ✅ |
-| S4-14 | Roteiro, gravação e edição do vídeo de pitch | — | 5 | ✏️ | ✏️ |
-| S4-15 | Atualização do Trello e ata da Review | — | 1 | ✏️ | ✏️ |
+| S4-01| Estrutura do repositório, Docker Compose e ambiente sem Docker | — | 3 | Henrique | ✅ |
+| S4-02| Modelo de dados a partir do diagrama de classes e dados simulados da Metaindústria | PB02–PB05 | 5 | Henrique | ✅ |
+| S4-03| Autenticação JWT e perfis operador, supervisor e gestor | PB01 | 3 | Henrique | ✅ |
+| S4-04| Motor de regras: matriz, limiar, severidade, reincidência e recorrência | PB05, PB09 | 8 | Henrique | ✅ |
+| S4-05| Ingestão do Edge AI, saúde de dispositivos e simulador | PB04, PB13 | 5 | Henrique | ✅ |
+| S4-06| WebSocket de alertas e notificação do supervisor | PB06 | 3 | Henrique | ✅ |
+| S4-07| Telas Visão geral e Monitoramento ao vivo | PB06, PB11 | 5 | Henrique | ✅ |
+| S4-08| Central de alertas, Tratamento e Histórico de ocorrências | PB06, PB08, PB10 | 8 | Henrique | ✅ |
+| S4-09| Operadores & EPIs e Terminal de campo | PB02, PB07 | 5 | Henrique | ✅ |
+| S4-10| Zonas & regras com auditoria | PB03, PB15 | 5 | Henrique | ✅ |
+| S4-11| Relatórios, exportação CSV/PDF e integração ERP/MES | PB11, PB12, PB14 | 5 | Henrique | ✅ |
+| S4-12| Testes automatizados da API | todas | 3 | Henrique | ✅ |
+| S4-13| README, arquitetura final, manual de uso, rastreabilidade e Scrum consolidado | — | 5 | Henrique | ✅ |
+| S4-14 | Roteiro, gravação e edição do vídeo de pitch | — | 5 | Henrique | 🔄 Em andamento |
+| S4-15 | Atualização do Trello, ata da Review e envio | — | 1 | Henrique | 🔄 Em andamento |
 | | **Total** | | **69** | | |
 
 ## 6. Daily Scrum
 
-Registrar ao menos as Dailies em que houve impedimento ou mudança de plano. ✏️
+Como a Sprint teve um único executor, a Daily foi usada como checkpoint de progresso e impedimentos.
 
-| Data | Integrante | O que fiz | O que vou fazer | Impedimentos |
-| --- | --- | --- | --- | --- |
-| ✏️ | Juan | | | |
-| ✏️ | Henrique | | | |
-| ✏️ | Rodrigo | | | |
-| ✏️ | Celso | | | |
-| ✏️ | Kagio | | | |
+| Data | O que foi feito | Próximo passo | Impedimentos / mudanças de plano |
+| --- | --- | --- | --- |
+| 21/10 (início) | Leitura do enunciado e dos artefatos da Sprint 3; Planning | Construir a API e o motor de regras | O repositório da Sprint 3 só tinha documentação: o produto precisou ser construído do zero |
+| 21/10 (noite) | Primeira versão da API | Construir as telas | **Mudança de plano:** com os materiais da Sprint 2 (requisitos, personas, diagramas e protótipo), o modelo de dados e as telas foram refeitos para seguir RF01–RF16, as personas e o visual do protótipo aprovado |
+| 22/10 | API, motor de regras, interface, testes, Docker e documentação concluídos | Atualizar o Trello e publicar no GitHub | O build das imagens Docker não pôde ser validado no ambiente de desenvolvimento; a API foi validada contra PostgreSQL e o fluxo sem Docker foi testado do zero |
+| 22/10 (noite) | Board da Sprint 4 criado e repositório publicado | Gravar o vídeo de pitch e enviar a entrega | O board das Sprints 1–3 estava na conta do Rodrigo, sem acesso para liberar membros; o Trello bloqueou a entrada pelo convite. Solução: board novo com o histórico das Sprints anteriores |
 
 ## 7. Sprint Review final — ata
 
 | Campo | Registro |
 | --- | --- |
-| Data e duração | ✏️ |
-| Participantes | ✏️ |
+| Data e duração | 22/10/2026 · revisão do incremento antes da entrega |
+| Participantes | Henrique Monteiro Khouri (a avaliação dos mentores da SPI acontece após a entrega) |
 | Meta da Sprint | Produto funcional de ponta a ponta + documentação + pitch |
-| Resultado | ✏️ Meta atingida / parcialmente atingida |
+| Resultado | Meta do produto e da documentação atingida; vídeo de pitch e envio em andamento |
 
 **Incremento demonstrado**
 
@@ -121,19 +127,22 @@ Registrar ao menos as Dailies em que houve impedimento ou mudança de plano. ✏
 8. Relatório de conformidade por setor e turno, com exportação CSV e PDF.
 9. Execução com `docker compose up --build` e suíte de 20 testes passando.
 
-**Itens do Sprint Backlog concluídos:** S4-01 a S4-13 ✏️ (+ S4-14 e S4-15 após a gravação e a atualização do board).
+**Itens do Sprint Backlog concluídos:** S4-01 a S4-13 (63 de 69 pontos). S4-14 (vídeo) e S4-15 (envio) em andamento.
 
-**Feedback recebido:** ✏️
+**Feedback recebido:** ainda não houve feedback externo sobre a Sprint 4; ele virá da avaliação dos mentores. Na revisão do próprio incremento foram identificados:
 
-**Decisões e itens que voltam ao Product Backlog:** PB16 (MQTT), PB17 (PoC com câmera real), PB18 (observabilidade e backups), PB19 (modo degradado). ✏️ Acrescentar o que surgir na Review.
+- validar `docker compose up --build` numa máquina com acesso ao Docker Hub antes da gravação;
+- a visão computacional segue simulada: a próxima evolução natural é uma PoC com câmera real.
+
+**Decisões e itens que voltam ao Product Backlog:** PB16 (MQTT), PB17 (PoC com câmera real), PB18 (observabilidade e backups), PB19 (modo degradado).
 
 ## 8. Sprint Retrospective
 
-✏️ Preencher em conjunto, com pelo menos um ponto por integrante.
-
 | O que funcionou bem | O que pode melhorar | Ações para o próximo ciclo |
 | --- | --- | --- |
-| | | |
+| Reaproveitar requisitos, personas e o protótipo das Sprints 1 e 2 deu consistência entre as quatro Sprints | A Sprint 4 ficou concentrada em um único integrante | Distribuir os itens do Sprint Backlog na Planning, com um responsável por cartão |
+| Priorizar o fluxo crítico (evento → alerta → tratamento) antes das telas secundárias | Artefatos espalhados em contas pessoais (repositórios em três contas, Trello na conta de um integrante) | Manter repositório e board em um espaço compartilhado, com mais de um administrador |
+| Testes automatizados por requisito facilitaram a revisão final | Validação do Docker ficou para o fim | Validar o ambiente de execução logo no início da Sprint |
 
 ## 9. Definition of Done (versão final)
 
@@ -151,7 +160,7 @@ Uma história está pronta quando:
 
 | Métrica | Valor |
 | --- | --- |
-| Pontos planejados | 69 ✏️ (ajustar se as estimativas mudarem) |
-| Pontos concluídos | ✏️ |
+| Pontos planejados | 69 |
+| Pontos concluídos | 63 (S4-14 e S4-15 em andamento) |
 | Testes automatizados | 20 passando |
 | Requisitos funcionais da Sprint 1 atendidos | 16 de 16 (RF04/RF05 com gateway simulado) |
