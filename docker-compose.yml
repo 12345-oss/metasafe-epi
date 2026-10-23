@@ -11,7 +11,8 @@ services:
     volumes:
       - dados_postgres:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U metasafe -d metasafe"]
+      # -h 127.0.0.1 força a checagem por TCP: o servidor temporário da primeira inicialização não conta como pronto
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U metasafe -d metasafe"]
       interval: 5s
       timeout: 3s
       retries: 20
@@ -26,6 +27,7 @@ services:
       CORS_ORIGINS: http://localhost:8080,http://localhost:5173
     ports:
       - "8000:8000"
+    restart: on-failure
     depends_on:
       db:
         condition: service_healthy

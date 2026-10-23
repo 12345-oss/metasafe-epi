@@ -5,7 +5,8 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import select, text
+from sqlalchemy import text
+from sqlalchemy.exc import OperationalError
 
 from .config import settings
 from .database import Base, SessionLocal, engine
@@ -18,8 +19,23 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name
 log = logging.getLogger("metasafe")
 
 
+async def _aguardar_banco(tentativas: int = 30, intervalo: float = 2.0) -> None:
+    """Espera o banco aceitar conexões (no Docker, o PostgreSQL reinicia uma vez na primeira subida)."""
+    for n in range(1, tentativas + 1):
+        try:
+            with engine.connect() as conn:
+                conn.execute(text("SELECT 1"))
+            return
+        except OperationalError:
+            if n == tentativas:
+                raise
+            log.info("Banco ainda indisponível (tentativa %s/%s). Nova tentativa em %.0fs.", n, tentativas, intervalo)
+            await asyncio.sleep(intervalo)
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    await _aguardar_banco()
     Base.metadata.create_all(engine)
     if settings.seed_on_startup:
         from .seed import popular_se_vazio
