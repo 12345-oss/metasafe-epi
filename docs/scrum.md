@@ -91,8 +91,8 @@ Estimativa em pontos (escala de Fibonacci).
 | S4-11| Relatórios, exportação CSV/PDF e integração ERP/MES | PB11, PB12, PB14 | 5 | Henrique | ✅ |
 | S4-12| Testes automatizados da API | todas | 3 | Henrique | ✅ |
 | S4-13| README, arquitetura final, manual de uso, rastreabilidade e Scrum consolidado | — | 5 | Henrique | ✅ |
-| S4-14 | Roteiro, gravação e edição do vídeo de pitch | — | 5 | Henrique | 🔄 Em andamento |
-| S4-15 | Atualização do Trello, ata da Review e envio | — | 1 | Henrique | 🔄 Em andamento |
+| S4-14 | Roteiro, gravação e edição do vídeo de pitch | — | 5 | Henrique | ✅ |
+| S4-15 | Atualização do Trello, ata da Review e envio | — | 1 | Henrique | ✅ |
 | | **Total** | | **69** | | |
 
 ## 6. Daily Scrum
@@ -113,7 +113,7 @@ Como a Sprint teve um único executor, a Daily foi usada como checkpoint de prog
 | Data e duração | 22/10/2026 · revisão do incremento antes da entrega |
 | Participantes | Henrique Monteiro Khouri (a avaliação dos mentores da SPI acontece após a entrega) |
 | Meta da Sprint | Produto funcional de ponta a ponta + documentação + pitch |
-| Resultado | Meta do produto e da documentação atingida; vídeo de pitch e envio em andamento |
+| Resultado | Meta atingida: produto, documentação e vídeo de pitch (https://youtu.be/x-k24Sfvfvs) entregues |
 
 **Incremento demonstrado**
 
@@ -127,7 +127,7 @@ Como a Sprint teve um único executor, a Daily foi usada como checkpoint de prog
 8. Relatório de conformidade por setor e turno, com exportação CSV e PDF.
 9. Execução com `docker compose up --build` e suíte de 20 testes passando.
 
-**Itens do Sprint Backlog concluídos:** S4-01 a S4-13 (63 de 69 pontos). S4-14 (vídeo) e S4-15 (envio) em andamento.
+**Itens do Sprint Backlog concluídos:** S4-01 a S4-15 (69 de 69 pontos).
 
 **Feedback recebido:** ainda não houve feedback externo sobre a Sprint 4; ele virá da avaliação dos mentores. Na revisão do próprio incremento foram identificados:
 
@@ -161,6 +161,6 @@ Uma história está pronta quando:
 | Métrica | Valor |
 | --- | --- |
 | Pontos planejados | 69 |
-| Pontos concluídos | 63 (S4-14 e S4-15 em andamento) |
+| Pontos concluídos | 69 |
 | Testes automatizados | 20 passando |
 | Requisitos funcionais da Sprint 1 atendidos | 16 de 16 (RF04/RF05 com gateway simulado) |
